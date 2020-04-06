@@ -50,6 +50,7 @@ NOTE: You can easily test your chosen `ssh` config file e.g. `ssh -F ssh.cfg app
 . Execute your main wrapping playbook
 [source,bash]
 ----
+ cp /etc/yum.repos.d/open_three-tier-app.repo .
  ansible-playbook main.yml
 ----
 
