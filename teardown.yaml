@@ -1,0 +1,30 @@
+---
+- name: cleanup
+  hosts: all
+  gather_facts: false
+  become: true
+  vars:
+    three_tier_packages:
+      - httpie
+      - python-pip
+      - haproxy
+      - tomcat
+      - postgresql-server
+
+  tasks:
+    - name: Remove the repo files
+      file:
+        state: absent
+        path: "/etc/yum.repos.d/{{ item.name }}.repo"
+      loop: "{{ repositories }}"
+
+    - name: Remove index.html
+      file:
+        path: /usr/share/tomcat/webapps/ROOT/index.html
+        state: absent
+
+    - name: Remove base tools and three tier app packages
+      yum:
+        name: "{{ three_tier_packages }}"
+        state: absent
+...

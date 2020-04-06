@@ -1,0 +1,3 @@
+appdb_name: postgresql
+appdb_package: postgresql-server
+

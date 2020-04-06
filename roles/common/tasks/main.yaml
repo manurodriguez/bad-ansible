@@ -1,0 +1,8 @@
+- name: enable repos
+  yum_repository:
+    name: "{{ item.name }}"
+    description: "{{ item.description }}" 
+    baseurl: "{{ item.baseurl }}"
+    gpgcheck: no
+    enabled: yes
+  loop: "{{ repositories }}"

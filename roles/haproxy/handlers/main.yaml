@@ -1,0 +1,4 @@
+- name: restart {{ frontend_service }}
+  service:
+    name: "{{ frontend_service }}"
+    state: restarted

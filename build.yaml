@@ -1,0 +1,30 @@
+---
+- name: Setup repositories
+  hosts: all
+  gather_facts: false # remove later! speeds up testing
+  become: true
+
+  roles:
+    - common
+
+- name: deploy haproxy
+  hosts: frontends
+  gather_facts: false # remove later! speeds up testing
+  become: true
+  roles:
+    - haproxy
+
+
+- name: deploy tomcat
+  hosts: apps
+  gather_facts: false
+  become: true
+  roles:
+    - apps
+
+- name: deploy postgres
+  gather_facts: false
+  become: true
+  hosts: appdbs
+  roles:
+    - appdb
