@@ -1,34 +1,30 @@
 ---
 - name: Setup repositories
   hosts: all
-  gather_facts: false # remove later! speeds up testing
+  gather_facts: true
   become: true
   vars_files:
     - vars.yaml
+  tasks:
 
-  roles:
-    - common
-
-- name: deploy haproxy
-  hosts: frontends
-  gather_facts: false # remove later! speeds up testing
-  become: true
-  vars_files:
-    - vars.yaml
-  roles:
-    - haproxy
-
-
-- name: deploy tomcat
-  hosts: apps
-  gather_facts: false
-  become: true
-  roles:
-    - apps
-
-- name: deploy postgres
-  gather_facts: false
-  become: true
-  hosts: appdbs
-  roles:
-    - appdb
+  - name: Setup common tasks
+    include_role:
+      name: common
+  
+  
+  - name: deploy haproxy
+    include_role:
+      name: haproxy
+    when: "'frontends' in group_names"
+  
+  
+  - name: deploy tomcat
+    include_role:
+      name: apps
+    when: "'apps' in group_names"
+  
+  
+  - name: deploy postgres
+    include_role:
+      name: appdb
+    when: "'appdbs' in group_names"
