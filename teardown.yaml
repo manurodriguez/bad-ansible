@@ -10,6 +10,8 @@
       - haproxy
       - tomcat
       - postgresql-server
+  vars_files:
+    - vars.yaml
 
   tasks:
     - name: Remove the repo files

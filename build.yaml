@@ -3,6 +3,8 @@
   hosts: all
   gather_facts: false # remove later! speeds up testing
   become: true
+  vars_files:
+    - vars.yaml
 
   roles:
     - common
@@ -11,6 +13,8 @@
   hosts: frontends
   gather_facts: false # remove later! speeds up testing
   become: true
+  vars_files:
+    - vars.yaml
   roles:
     - haproxy
 

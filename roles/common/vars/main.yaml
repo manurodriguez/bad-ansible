@@ -1,5 +1,5 @@
-repositories:
-  - name: "epel"
-    description: "Extra Packages for Enterprise Linux 7 - $basearch"
-    baseurl: "http://download.fedoraproject.org/pub/epel/7/$basearch"
+#repositories:
+#  - name: "epel"
+#    description: "Extra Packages for Enterprise Linux 7 - $basearch"
+#    baseurl: "http://download.fedoraproject.org/pub/epel/7/$basearch"
 # Add more required repos below

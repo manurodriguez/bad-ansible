@@ -1,4 +1,4 @@
-GUID: your_guid
+GUID: ee7a
 frontend_packages:
   - httpie
   - haproxy
