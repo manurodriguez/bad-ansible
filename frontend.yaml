@@ -1,0 +1,10 @@
+---
+- name: Setup haproxy only
+  hosts: frontends:apps
+  gather_facts: true
+  become: true
+  tasks:
+  - name: Configure Frontends
+    include_role:
+      name: haproxy
+    when: "'frontends' in group_names"

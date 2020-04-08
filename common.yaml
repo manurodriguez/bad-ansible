@@ -1,0 +1,7 @@
+---
+- name: Setup common tasks only
+  hosts: all
+  gather_facts: false
+  become: true
+  roles:
+  - common

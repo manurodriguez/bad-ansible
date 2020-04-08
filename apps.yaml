@@ -1,0 +1,7 @@
+---
+- name: Setup apps only
+  hosts: apps
+  gather_facts: false
+  become: true
+  roles:
+  - apps
