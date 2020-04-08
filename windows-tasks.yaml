@@ -1,0 +1,19 @@
+---
+- name: Ping window server
+  hosts: windows
+  gather_facts: false
+  become: false
+  tasks:
+
+  - name: Run an executable using win_command and save output for next task
+    win_command: whoami.exe
+    register: whoami_result
+
+  - name: Print who am I
+    debug:
+      var: whoami_result.stdout
+
+  - name: Create Temp folder
+    win_file:
+      path: C:\Temp3
+      state: directory
