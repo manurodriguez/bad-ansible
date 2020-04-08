@@ -1,0 +1,8 @@
+---
+- name: Ping window server
+  hosts: windows
+  gather_facts: false
+  become: false
+  tasks:
+  - name: verify connectivity
+    win_ping:
